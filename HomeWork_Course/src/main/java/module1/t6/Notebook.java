@@ -5,6 +5,7 @@ package module1.t6;
  * Needed size of Notebook is given in constructor
  * We don't have stack or anything else here, so if Notes are deleted we don't
  * move pointers, counter isn't update in it.
+ * UPD: Realized counter update and moving Notes when deleting.
  */
 public class Notebook {
     private Note[] notes;
