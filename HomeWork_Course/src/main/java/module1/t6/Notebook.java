@@ -19,7 +19,6 @@ public class Notebook {
 
     /**
      * Method adds Note to Notebook and increases last index (number) of Note for next Note
-     *
      * @param note - the ready Note which we want to add to Notebook
      */
     public void addNote(Note note) {

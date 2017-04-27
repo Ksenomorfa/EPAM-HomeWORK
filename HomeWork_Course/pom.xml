@@ -4,15 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>HomeWork</groupId>
-    <artifactId>PB</artifactId>
+    <groupId>ru.polinabevad</groupId>
+    <artifactId>Homework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
 <dependencies>
     <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>RELEASE</version>
+        <version>4.12</version>
         <scope>test</scope>
     </dependency>
 </dependencies>

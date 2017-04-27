@@ -29,6 +29,7 @@ public class FunctionTangensCalc {
         System.out.printf("Argument | F(x) |\n");
         for (double[] aTable : table) {
             System.out.printf("   %5.2f | %5.2f|\n", aTable[0], aTable[1]);
+
         }
     }
 

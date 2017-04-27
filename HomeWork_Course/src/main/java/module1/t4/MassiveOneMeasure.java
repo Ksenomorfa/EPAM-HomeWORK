@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class MassiveOneMeasure {
 
-    /**
+    /** Calculate max number of (a1+a2,a3+a4,...,an+an+1) for even number and
+     * of(a1+a2,a3+a4,...,an+an+1, an+2) for odd number
      * @param size    - size of one measuring massive
      * @param massive - massive containing numbers to calculate
-     * calculate max number of (a1+a2,a3+a4,...,an+an+1) for even number and
-     * of(a1+a2,a3+a4,...,an+an+1, an+2) for odd number
+     *
      */
     private static void maxInMassive(int size, int[] massive) {
         int max = 0;
