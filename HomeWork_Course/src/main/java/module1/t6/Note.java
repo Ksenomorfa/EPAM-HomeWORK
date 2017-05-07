@@ -6,6 +6,7 @@ package module1.t6;
  */
 
 public class Note {
+
     private String stringNote;
     private int number;
 
@@ -31,6 +32,23 @@ public class Note {
     boolean equals(Note note) {
         return (number == note.number) && (stringNote.equals(note.stringNote));
 
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (null == o || getClass() != o.getClass()) return false;
+
+        Note note = (Note) o;
+
+        if (number != note.number) return false;
+        return stringNote != null ? stringNote.equals(note.stringNote) : note.stringNote == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = stringNote != null ? stringNote.hashCode() : 0;
+        result = 31 * result + number;
+        return result;
     }
 
     int getNumber() {
