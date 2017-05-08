@@ -5,9 +5,9 @@ TASK: Разработайте спецификацию и создайте кл
 Определите в этом классе методы equals(), hashCode() и toString().
  */
 public class Pen {
-    String manufactor;
-    String model;
-    double price;
+    private String manufactor;
+    private String model;
+    private double price;
 
     @Override
     public String toString() {
@@ -40,5 +40,17 @@ public class Pen {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getManufactor() {
+        return manufactor;
+    }
+
+    public String getModel() {
+        return model;
     }
 }
