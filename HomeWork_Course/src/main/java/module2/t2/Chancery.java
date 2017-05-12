@@ -37,7 +37,7 @@ public abstract class Chancery {
 
     @Override
     public String toString() {
-        return "Type: " + super.toString() + ", manufactor: " + manufactor + ", model: " + model + ", price: " + price;
+        return "Manufactor: " + manufactor + ", model: " + model + ", price: " + price;
     }
 
     @Override

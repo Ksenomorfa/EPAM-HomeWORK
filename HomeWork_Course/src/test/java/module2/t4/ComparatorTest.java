@@ -30,20 +30,40 @@ public class ComparatorTest {
     @Test
     public void starterKitSortModel() {
         Collections.sort(starterKitList, modelComparator);
-        printCollection(starterKitList);
+        assertEquals("Manufactor: Factic, model: 23UY2, price: 10.2",
+                starterKitList.get(0).toString());
+        assertEquals("Manufactor: Factic, model: 23UY2, price: 4.5",
+                starterKitList.get(1).toString());
+        assertEquals("Manufactor: Fabio, model: 26782, price: 4.43",
+                starterKitList.get(2).toString());
+        assertEquals("Manufactor: Erich, model: X123, price: 12.43",
+                starterKitList.get(3).toString());
     }
 
     @Test
     public void starterKitSortPrice() {
         Collections.sort(starterKitList, priceComparator);
-        printCollection(starterKitList);
+        assertEquals("Manufactor: Fabio, model: 26782, price: 4.43",
+                starterKitList.get(0).toString());
+        assertEquals("Manufactor: Factic, model: 23UY2, price: 4.5",
+                starterKitList.get(1).toString());
+        assertEquals("Manufactor: Factic, model: 23UY2, price: 10.2",
+                starterKitList.get(2).toString());
+        assertEquals("Manufactor: Erich, model: X123, price: 12.43",
+                starterKitList.get(3).toString());
     }
 
     @Test
     public void starterKitSortModelPrice() {
         Collections.sort(starterKitList, modelPriceComparator);
-        printCollection(starterKitList);
-    }
+        assertEquals("Manufactor: Factic, model: 23UY2, price: 4.5",
+                starterKitList.get(0).toString());
+        assertEquals("Manufactor: Factic, model: 23UY2, price: 10.2",
+                starterKitList.get(1).toString());
+        assertEquals("Manufactor: Fabio, model: 26782, price: 4.43",
+                starterKitList.get(2).toString());
+        assertEquals("Manufactor: Erich, model: X123, price: 12.43",
+                starterKitList.get(3).toString());    }
 
     public void printCollection(List<Chancery> list) {
         for (Chancery chancery : list) {

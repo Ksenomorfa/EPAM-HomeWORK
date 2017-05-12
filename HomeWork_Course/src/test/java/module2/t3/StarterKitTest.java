@@ -26,6 +26,9 @@ public class StarterKitTest {
     @Test
     public void testStarterKit() {
         StarterKit starterKit = new StarterKit(pen, pencil, ruler, eraser);
-        System.out.println(starterKit);
+        assertEquals("Starter Kit: pen:Manufactor: Fabio, model: 26782, price: 4.43, " +
+                "pencil: Manufactor: Erich, model: X123, price: 12.43, " +
+                "ruler: Manufactor: Factic, model: 23UY2, price: 10.2, " +
+                "eraser: Manufactor: Factic, model: 2T42-2, price: 4.5",starterKit.toString());
     }
 }
