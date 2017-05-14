@@ -63,11 +63,7 @@ public class ComparatorTest {
         assertEquals("Manufactor: Fabio, model: 26782, price: 4.43",
                 starterKitList.get(2).toString());
         assertEquals("Manufactor: Erich, model: X123, price: 12.43",
-                starterKitList.get(3).toString());    }
-
-    public void printCollection(List<Chancery> list) {
-        for (Chancery chancery : list) {
-            System.out.println(chancery);
-        }
+                starterKitList.get(3).toString());
     }
+
 }
