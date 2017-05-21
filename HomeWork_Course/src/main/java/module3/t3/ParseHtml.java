@@ -52,7 +52,7 @@ public class ParseHtml {
 
         Integer[] arrayOfImages = listOfImages.toArray(new Integer[listOfImages.size()]);
 
-        for(int i=0;i<arrayOfImages.length;i++) {
+        for(int i=0;i<arrayOfImages.length-1;i++) {
             if(arrayOfImages[i]>arrayOfImages[i+1]) {
                 System.out.println("Порядок ссылок на рисунки = \"разнобой\"");
                 break;
