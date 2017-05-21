@@ -27,9 +27,10 @@ public class ParseHtml {
     }
 
     private static void findStringsWithImages(StringBuilder wholeFile) {
-        Pattern patternString = Pattern.compile("[а-яё(<sub>)\\dА-Я\\s\\-\\–\\,\\«\\»\\\"\\)\\(\\/]*" +
-                "\\(*[Рр]ис[унк]*.\\s*(\\d{1,2}),*\\s*[и-]*\\s*(\\d{1,2})*[абвгд]*(\\,)*[абвгд]*\\)*" +
-                "[а-яё(<sub>)\\dА-Я\\s\\-\\–\\,\\«\\»\\\"\\)\\(\\/]*(\\.\\?)*(\\s\\d{1,2}\\))*");
+        //This is awful. Strings that contains only link on images aren't match pattern
+        Pattern patternString = Pattern.compile("[А-Я][^\\.?]*(\\(?[Рр]ис[унк]*.?\\s*(\\d{1,2}),?\\s?[и-]?\\s?" +
+                "(\\d{1,2})?[абвгд]?\\,?[абвгд]*\\)*)[\\sё\\(<sub>)?«»,а-яА-ЯC0-9\\-\\–]+(\\(?[Рр]ис[унк]" +
+                "*\\s*(\\d{1,2}),?\\s?[и-]?\\s?(\\d{1,2})?\\))*[^\\.?]*([,.\\s0-9\\)а-я«»]*)");
         Matcher matcherString = patternString.matcher(wholeFile);
         List<String> listOfStrings = new ArrayList<>();
         while(matcherString.find()) {
@@ -40,7 +41,7 @@ public class ParseHtml {
     }
 
     private static void checkImagesUsage(StringBuilder wholeFile) {
-        Pattern patternImage = Pattern.compile("\\(*[Рр]ис[унк]*.\\s*(\\d{1,2}),*\\s*[и-]*\\s*(\\d{1,2})*[абвгд]*(\\,)*[абвгд]*\\)*");
+        Pattern patternImage = Pattern.compile("\\(?[Рр]ис[унк]*.?\\s*(\\d{1,2}),?\\s?[и-]?\\s?(\\d{1,2})?[абвгд]?\\,?[абвгд]*\\)*");
         Matcher matcherImage = patternImage.matcher(wholeFile);
         List<Integer> listOfImages = new ArrayList<>();
 
