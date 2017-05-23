@@ -1,8 +1,10 @@
 package module2.t6;
 
+import org.hamcrest.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class АтомнаяЛодкаTest {
@@ -12,6 +14,7 @@ public class АтомнаяЛодкаTest {
         АтомнаяЛодка атомнаяЛодка1 = new АтомнаяЛодка();
         атомнаяЛодка1.плыть();
         assertEquals(100,атомнаяЛодка1.сколькоЕдем());
+        assertThat(атомнаяЛодка1.сколькоЕдем(),is(100));
     }
 
     @Test
