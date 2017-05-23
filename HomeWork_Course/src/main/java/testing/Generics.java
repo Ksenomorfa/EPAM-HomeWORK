@@ -1,5 +1,7 @@
 package testing;
 
+import java.io.InputStream;
+import java.io.Reader;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -19,5 +21,7 @@ public class Generics<T> {
         Generics<?> generics = new Generics<>();
         List<String> list = Arrays.asList("value");
         generics.test(list);
+
     }
+
 }

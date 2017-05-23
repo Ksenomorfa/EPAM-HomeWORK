@@ -9,7 +9,7 @@ public class MyList<E> implements List<E> {
     public int size() {
         return size;
     }
-
+     
     @Override
     public void add(E element) {
         if (first == null) {
