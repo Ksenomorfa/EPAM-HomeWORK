@@ -3,10 +3,7 @@ package module3.t2;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,7 +21,7 @@ public class ResourceBundleAppTest {
         Locale.setDefault(Locale.forLanguageTag("ru-RU"));
         app = new ResourceBundleApp(Locale.getDefault());
 
-        assertEquals(Arrays.toString(app.getListBundleQuestions().toArray()),
+        assertEquals(app.getListBundleQuestions().toString(),
                 "[1. Как называется наша планета?, " +
                         "2. Где мы сейчас находимся?, " +
                         "3. Какой класс звезды у нашего Солнца?, " +
@@ -37,7 +34,7 @@ public class ResourceBundleAppTest {
         Locale.setDefault(Locale.forLanguageTag("en-US"));
         app = new ResourceBundleApp(Locale.getDefault());
 
-        assertEquals(Arrays.toString(app.getListBundleQuestions().toArray()),
+        assertEquals(app.getListBundleQuestions().toString(),
                 "[1. What is the name of our planet?, " +
                         "2. Where are we now?, " +
                         "3. What it the class of our Sun?, " +
