@@ -52,7 +52,7 @@ public class ParseHtml {
         System.out.println(listOfImages);
 
         Integer[] arrayOfImages = listOfImages.toArray(new Integer[listOfImages.size()]);
-
+        //As I understand from task, if any image is not in right order - links aren't good.
         for(int i=0;i<arrayOfImages.length-1;i++) {
             if(arrayOfImages[i]>arrayOfImages[i+1]) {
                 System.out.println("Порядок ссылок на рисунки = \"разнобой\"");
