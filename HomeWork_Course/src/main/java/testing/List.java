@@ -6,5 +6,4 @@ interface List <E> {
 
     void remove(int i);
     E get(int i);
-
 }
