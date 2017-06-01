@@ -1,13 +1,11 @@
 package module4.t1;
 
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class KeywordsBinary {
-
+class KeywordsBinary {
     private String stringFromInput = "";
 
     private void initInput(String file) throws IOException {
@@ -23,18 +21,6 @@ public class KeywordsBinary {
             }
         }
     }
-    /* I tried few methods to get file in stream
-    public InputStream initThroughDirectory() throws FileNotFoundException {
-        inputStream = new FileInputStream(".\\src\\main\\resources\\module4\\t1\\binaryCode.txt");
-        System.out.println(inputStream);
-        return inputStream;
-    }
-
-    public String initThroughPaths() throws IOException {
-        String string = new String(Files.readAllBytes(Paths.get(".\\src\\main\\resources\\module4\\t1\\binaryCode.txt")));
-        return string;
-    }
-     */
 
     private List getListOfKeyWordsFromFile() throws IOException {
         String stringFromKeywordsFile = new String(Files.readAllBytes(Paths.get((".\\src\\main\\resources\\module4\\keywords.txt"))));
@@ -44,10 +30,11 @@ public class KeywordsBinary {
     }
 
     private Map getUsedKeywordsFromInput() throws IOException {
-        HashMap<String,Integer> mapOfUsedKeywords = new HashMap<>();
+        TreeMap<String,Integer> mapOfUsedKeywords = new TreeMap<>();
         String [] tempStringArray =  stringFromInput.split("\\s+|\\({1}");
+        List listOfUsedKeywords = getListOfKeyWordsFromFile();
         for (String str:tempStringArray) {
-            if (getListOfKeyWordsFromFile().contains(str)) {
+            if (listOfUsedKeywords.contains(str)) {
                 if (mapOfUsedKeywords.containsKey(str)) {
                     mapOfUsedKeywords.put(str, mapOfUsedKeywords.get(str) +1);
                 }
@@ -57,11 +44,12 @@ public class KeywordsBinary {
         return mapOfUsedKeywords;
     }
 
-    public String setUsedKeywordsToFile (String file) throws IOException {
+    String setUsedKeywordsToFile (String file) throws IOException {
         initInput(file);
-        getUsedKeywordsFromInput();
-        try(OutputStream outputStream = new FileOutputStream("output.txt")) {
+        try(OutputStream outputStream = new FileOutputStream("out\\outputM41.txt")) {
             outputStream.write(getUsedKeywordsFromInput().toString().getBytes("UTF-8"));
+            outputStream.write("\nSize: ".getBytes("UTF-8"));
+            outputStream.write(String.valueOf(getUsedKeywordsFromInput().size()).getBytes("UTF-8"));
         }
         return getUsedKeywordsFromInput().toString();
     }
