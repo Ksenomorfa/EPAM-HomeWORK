@@ -1,7 +1,8 @@
 package module5.t2;
 
-import java.io.*;
-import java.nio.file.NoSuchFileException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -14,13 +15,12 @@ import java.util.Properties;
 public class UniversalPropReader {
 
     /**
-     *
-     * @param key - the key in properties file for which we search the value
+     * @param key  - the key in properties file for which we search the value
      * @param file - the properties file in which we search key
      * @return
-     * @throws NotSuchFileException if we didn't find file in specific location
+     * @throws NotSuchFileException  if we didn't find file in specific location
      * @throws NotSuchValueException if we didn't find value in specific properties file
-     * @throws IOException for major exceptions of input-output operations
+     * @throws IOException           for major exceptions of input-output operations
      */
     public String getValueFromPropertiesFile(String key, String file)
             throws NotSuchFileException, NotSuchValueException, IOException {
