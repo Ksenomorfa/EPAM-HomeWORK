@@ -22,16 +22,25 @@ public class UniversalPropReader {
      * @throws NotSuchValueException if we didn't find value in specific properties file
      * @throws IOException           for major exceptions of input-output operations
      */
-    public String getValueFromPropertiesFile(String key, String file)
-            throws NotSuchFileException, NotSuchValueException, IOException {
 
-        Properties properties = new Properties();
+    private Properties properties = new Properties();
+    private String fileToRead;
+
+    public UniversalPropReader(String file) {
+        fileToRead = file;
+    }
+
+    public void readPropertiesFromFile() throws NotSuchFileException, IOException {
         try {
-            FileInputStream inputFile = new FileInputStream(file);
+            FileInputStream inputFile = new FileInputStream(fileToRead);
             properties.load(inputFile);
         } catch (FileNotFoundException e) {
-            throw new NotSuchFileException(file);
+            throw new NotSuchFileException(fileToRead);
         }
+    }
+
+    public String getValueFromPropertiesFile(String key)
+            throws NotSuchValueException {
         String value = null;
         if ((value = properties.getProperty(key)) == null) {
             throw new NotSuchValueException(value);

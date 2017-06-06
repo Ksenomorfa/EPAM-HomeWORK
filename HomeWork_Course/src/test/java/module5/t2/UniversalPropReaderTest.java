@@ -11,36 +11,34 @@ public class UniversalPropReaderTest {
     UniversalPropReader uni;
 
     @Before
-    public void init() {
-        uni = new UniversalPropReader();
+    public void init() throws IOException, NotSuchFileException {
+        uni = new UniversalPropReader(".\\src\\main\\resources\\module5.properties");
+        uni.readPropertiesFromFile();
     }
 
     @Test
-    public void testOK() throws IOException, NotSuchFileException, NotSuchValueException {
-        assertEquals("http://webserver:80/mysql", uni.getValueFromPropertiesFile
-                ("server", ".\\src\\main\\resources\\module5.properties"));
-        assertEquals("root", uni.getValueFromPropertiesFile
-                ("login", ".\\src\\main\\resources\\module5.properties"));
-        assertEquals("root", uni.getValueFromPropertiesFile
-                ("pass", ".\\src\\main\\resources\\module5.properties"));
+    public void testOK() throws NotSuchValueException {
+        assertEquals("http://webserver:80/mysql", uni.getValueFromPropertiesFile("server"));
+        assertEquals("root", uni.getValueFromPropertiesFile("login"));
+        assertEquals("root", uni.getValueFromPropertiesFile("pass"));
     }
 
     @Test(expected = NotSuchValueException.class)
-    public void testExceptionValue() throws IOException, NotSuchFileException, NotSuchValueException {
-        assertEquals("root", uni.getValueFromPropertiesFile
-                ("password", ".\\src\\main\\resources\\module5.properties"));
+    public void testExceptionValue() throws NotSuchValueException {
+        assertEquals("root", uni.getValueFromPropertiesFile("password"));
     }
 
     @Test(expected = NotSuchFileException.class)
-    public void testExceptionFile() throws IOException, NotSuchFileException, NotSuchValueException {
-        assertEquals("root", uni.getValueFromPropertiesFile
-                ("pass", ".\\src\\main\\resources\\module6.properties"));
+    public void testExceptionFile() throws IOException, NotSuchFileException {
+        uni = new UniversalPropReader(".\\src\\main\\resources\\module7.properties");
+        uni.readPropertiesFromFile();
     }
 
     //If we have exception on file, we don't go forward with trying to get property, it will be null
     @Test(expected = NotSuchFileException.class)
     public void testExceptionFileValue() throws IOException, NotSuchFileException, NotSuchValueException {
-        assertEquals("root", uni.getValueFromPropertiesFile
-                ("password", ".\\src\\main\\resources\\module6.properties"));
+        uni = new UniversalPropReader(".\\src\\main\\resources\\module7.properties");
+        uni.readPropertiesFromFile();
+        assertEquals("root", uni.getValueFromPropertiesFile("password"));
     }
 }
