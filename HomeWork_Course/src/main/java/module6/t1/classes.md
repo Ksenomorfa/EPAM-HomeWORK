@@ -6,10 +6,10 @@ Ordering  | Random Access | Key-Value | Pairs | Allows Duplicates | Allows Null 
 ----------|---------------|-----------|-------|-------------------|--------------------|-------------|--------------------
 ArrayList |	Yes           | No        | No    | Yes               | Yes                | No          | No 
 LinkedList| No            | No        | No    | Yes               | Yes                | No          | No
-HashMap   | No            | Yes       | No    | Yes               | Keys - Only one    | No          | No
-TreeMap   | No            | Yes       | No    | Yes               | Keys - No          | No          | No
-LinkedHashMap | No        | Yes       | No    | Yes               | Keys - Only one    | No          | No
-EnumMap   | No            | Yes       | No    | Yes               | Keys - No          | No          | No
+HashMap   | No            | Yes       | No    | Keys - No         | Keys - Only one    | No          | No
+TreeMap   | No            | Yes       | No    | Keys - No         | Keys - No          | No          | No
+LinkedHashMap | No        | Yes       | No    | Keys - No         | Keys - Only one    | No          | No
+EnumMap   | No            | Yes       | No    | Keys - No         | Keys - No          | No          | No
 HashSet   | No            | No        | No    | No                | Only one           | No          | No
 TreeSet   | No            | No        | No    | No                | No                 | No          | No
 LinkedHashSet | No        | No        | No    | No                | Only one           | No          | No
