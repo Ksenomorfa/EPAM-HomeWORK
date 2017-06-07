@@ -30,7 +30,7 @@ public class UniversalPropReaderV2 {
 
     public void readPropertiesFromFile() throws IOException {
         String line;
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileToRead));) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileToRead))) {
             while ((line = reader.readLine()) != null) {
                 if (line.trim().length() == 0) continue;
                 if (line.charAt(0) == '#') continue;
