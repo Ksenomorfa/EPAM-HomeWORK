@@ -1,4 +1,4 @@
-package testing;
+package testing.Structures;
 
 interface List <E> {
     int size();

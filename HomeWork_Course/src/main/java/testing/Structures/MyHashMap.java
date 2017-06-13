@@ -1,4 +1,4 @@
-package testing;
+package testing.Structures;
 //TODO: remove entry, tests, increase capacity through checking load factor
 public class MyHashMap<K, V> {
     Entry<K, V>[] array;

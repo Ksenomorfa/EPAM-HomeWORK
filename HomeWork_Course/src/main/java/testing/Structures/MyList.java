@@ -1,4 +1,4 @@
-package testing;
+package testing.Structures;
 
 public class MyList<E> implements List<E> {
     Entry<E> first;

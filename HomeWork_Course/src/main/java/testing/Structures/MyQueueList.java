@@ -1,4 +1,4 @@
-package testing;
+package testing.Structures;
 
 public class MyQueueList<E> implements MyQueueInt<E> {
     private Entry<E> head;

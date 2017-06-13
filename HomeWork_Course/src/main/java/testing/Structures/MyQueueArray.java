@@ -1,4 +1,4 @@
-package testing;
+package testing.Structures;
 
 public class MyQueueArray<E> implements MyQueueInt<E> {
     private Object[] objects = new Object[5];

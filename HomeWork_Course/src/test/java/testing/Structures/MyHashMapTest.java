@@ -1,8 +1,6 @@
-package testing;
+package testing.Structures;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class MyHashMapTest {
     @Test

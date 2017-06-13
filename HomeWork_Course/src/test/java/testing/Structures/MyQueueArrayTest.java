@@ -1,4 +1,4 @@
-package testing;
+package testing.Structures;
 
 import org.junit.Test;
 
