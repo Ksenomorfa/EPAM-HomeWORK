@@ -1,6 +1,6 @@
-package testing;
+package testing.Sortes;
 
-public class Sortings {
+public class SelectionSort {
     public int [] sort (int [] mass) {
 
         int temp;

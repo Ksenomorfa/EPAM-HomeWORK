@@ -1,16 +1,16 @@
-package testing;
+package testing.Sortes;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 
-public class SortingsTest {
-    Sortings s;
+public class SelectionSortTest {
+    SelectionSort s;
 
     @Before
     public void init() {
-        s = new Sortings();
+        s = new SelectionSort();
     }
 
     @Test
@@ -30,6 +30,7 @@ public class SortingsTest {
 
         assertArrayEquals(resultArray, sortedArray);
     }
+
     @Test
     public void sortElements() throws Exception {
         int[] srcArray = {};
