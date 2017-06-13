@@ -5,7 +5,7 @@ import org.junit.Test;
 public class MyQueueTest {
     @Test
     public void test() throws Exception {
-        MyQueue<String> queue = new MyQueue<>();
+        MyQueueList<String> queue = new MyQueueList<>();
         queue.enqueue("String1");
         queue.enqueue("String2");
         queue.enqueue("String3");

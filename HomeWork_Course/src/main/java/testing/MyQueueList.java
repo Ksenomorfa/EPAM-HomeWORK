@@ -1,6 +1,6 @@
 package testing;
 
-public class MyQueue<E> implements MyQueueInt<E> {
+public class MyQueueList<E> implements MyQueueInt<E> {
     private Entry<E> head;
     private Entry<E> tail;
     private int length;
