@@ -35,7 +35,9 @@ public class UniversalPropReader {
             FileInputStream inputFile = new FileInputStream(fileToRead);
             properties.load(inputFile);
         } catch (FileNotFoundException e) {
-            throw new NotSuchFileException(fileToRead);
+            NotSuchFileException nsfe = new NotSuchFileException(fileToRead);
+            nsfe.printStackTrace();
+            throw nsfe;
         }
     }
 
@@ -43,7 +45,9 @@ public class UniversalPropReader {
             throws NotSuchValueException {
         String value = null;
         if ((value = properties.getProperty(key)) == null) {
-            throw new NotSuchValueException(value);
+            NotSuchValueException nsve = new NotSuchValueException(value);
+            nsve.printStackTrace();
+            throw nsve;
         }
         return value;
     }
