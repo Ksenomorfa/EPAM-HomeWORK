@@ -34,22 +34,22 @@ class FileSystemExplorer {
      * @throws IOException if we have problem with access of reading the filesystem
      */
     boolean createNewTXTFile(String filePath) throws IOException {
-        File file = new File(filePath);
         try {
+            File file = new File(filePath);
             if (!file.exists()) System.out.println("File is created.");
             else {
                 System.out.println("The file is already exists.");
             }
             return file.createNewFile();
         } catch (AccessDeniedException e) {
-            System.out.println("You don't have access to create file here.");
-            throw new AccessDeniedException(filePath);
+            System.out.println("You don't have access to create file here: " + filePath);
+            throw e;
         } catch (FileSystemException e) {
-            System.out.println("We have a problem with file system, please try again.");
-            throw new FileSystemException(filePath);
+            System.out.println("We have a problem with file system, please try again, while creating here: " + filePath);
+            throw e;
         } catch (IOException e) {
             e.printStackTrace();
-            throw new IOException();
+            throw e;
         }
     }
 
