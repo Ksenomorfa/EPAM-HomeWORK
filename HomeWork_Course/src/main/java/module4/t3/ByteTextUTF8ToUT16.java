@@ -16,13 +16,12 @@ class ByteTextUTF8ToUT16 {
      */
     private String initInputFile() throws IOException {
         StringBuilder stringFromInput = new StringBuilder();
-        final int bufferSize = 4096;
-        final char[] buffer = new char[bufferSize];
         InputStream file = ByteTextUTF8ToUT16.class.getResourceAsStream("cyrillicUTF-8.txt");
-        try (InputStreamReader inputStreamReader = new InputStreamReader(file, "UTF-8")) {
-            while (inputStreamReader.ready()) {
-                int rsz = inputStreamReader.read(buffer, 0, buffer.length);
-                stringFromInput.append(buffer, 0, rsz);
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(file, "UTF-8"))) {
+            String str;
+            while ((str=br.readLine())!=null) {
+                stringFromInput.append(str).append("\n");
             }
         }
         return stringFromInput.toString();
