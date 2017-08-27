@@ -1,6 +1,5 @@
 package multithreading;
 
-import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
@@ -12,58 +11,77 @@ public class SemaphorePhilosophers {
         ExecutorService service = Executors.newFixedThreadPool(NUMBER_OF_PHILOSOPHERS);
         Semaphore[] semaphores = new Semaphore[NUMBER_OF_PHILOSOPHERS];
 
+        int lastFork = semaphores.length - 1;
+
         for (int i = 0; i < semaphores.length; i++) {
             semaphores[i] = new Semaphore(1);
         }
 
-        while (true) {
-            int i = new Random().nextInt(5);
-            int firstFork = 0;
-            int lastFork = semaphores.length - 1;
+        for (int i = 0; i < NUMBER_OF_PHILOSOPHERS; i++) {
             if (i < lastFork) {
-                semaphores[i].acquire(1);
-                System.out.println("Phylosoph number:" + i + " put fork:" + i + " up");
-                int nextFork = i + 1;
-                semaphores[nextFork].acquire(1);
-                System.out.println("Phylosoph number:" + i + " put fork:" + nextFork + " up");
-
-                service.submit(() -> {
-                    System.out.println("Phylosoph number:" + i + " eat");
-                    sleepMillis(new Random().nextInt(10000));
-
-                    semaphores[i + 1].release();
-                    System.out.println("Phylosoph number:" + i + " put fork:" + (i + 1) + " down");
-                    semaphores[i].release();
-                    System.out.println("Phylosoph number:" + i + " put fork:" + i + " down");
-
-                    System.out.println("Phylosoph number:" + i + " stop eating");
-                });
+                service.submit(new MyThreadAll(i, semaphores));
             } else {
-                semaphores[firstFork].acquire(1);
-                System.out.println("Phylosoph number:" + i + " put fork:" + firstFork + " up");
-                semaphores[lastFork].acquire(1);
-                System.out.println("Phylosoph number:" + i + " put fork:" + lastFork + " up");
-
-                service.submit(() -> {
-                    System.out.println("Phylosoph number:" + i + " eat");
-                    sleepMillis(new Random().nextInt(10000));
-
-                    semaphores[lastFork].release();
-                    System.out.println("Phylosoph number:" + i + " put fork:" + lastFork + " down");
-                    semaphores[firstFork].release();
-                    System.out.println("Phylosoph number:" + i + " put fork:" + firstFork + " down");
-
-                    System.out.println("Phylosoph number:" + i + " stop eating");
-                });
+                service.submit(new MyThreadLast(lastFork, semaphores));
             }
         }
     }
+}
 
-    static private void sleepMillis(long millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+class MyThreadLast implements Runnable {
+    private int lastFork;
+    private Semaphore[] semaphores;
+
+    public MyThreadLast(int lastFork, Semaphore[] semaphores) {
+        this.lastFork = lastFork;
+        this.semaphores = semaphores;
+    }
+
+    @Override
+    public void run() {
+        while(true) {
+            try {
+                semaphores[0].acquire(1);
+                semaphores[lastFork].acquire(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Phylosoph number:" + lastFork + " eat");
+
+            Sleep.sleepMillis(2000);
+            semaphores[lastFork].release();
+            semaphores[0].release();
+            System.out.println("Phylosoph number:" + lastFork + " stop eating");
+
+        }
+    }
+}
+class MyThreadAll implements Runnable {
+    private int number;
+    private Semaphore[] semaphores;
+
+    public MyThreadAll(int number, Semaphore[] semaphores) {
+        this.number = number;
+        this.semaphores = semaphores;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            int nextFork = number + 1;
+            try {
+                semaphores[number].acquire(1);
+                semaphores[nextFork].acquire(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Phylosoph number:" + number + " eat");
+
+            Sleep.sleepMillis(2000);
+
+            semaphores[number + 1].release();
+            semaphores[number].release();
+            System.out.println("Phylosoph number:" + number + " stop eating");
+
         }
     }
 }

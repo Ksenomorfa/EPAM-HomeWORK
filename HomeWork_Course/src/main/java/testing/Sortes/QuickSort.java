@@ -9,11 +9,11 @@ public class QuickSort {
     static void doSort(int a[], int lo, int hi) {
         int i = lo;
         int j = hi;
-        int middle = a[i + (j - i) / 2];
+        int middle = i + (j - i) / 2;
 
         while (i <= j) {
-            while (a[i] < middle) i++;
-            while (a[j] > middle) j--;
+            while (a[i] < a[middle]) i++;
+            while (a[j] > a[middle]) j--;
             if (i <= j) {
                 if (i < j) {
                     int tmp = a[i];
