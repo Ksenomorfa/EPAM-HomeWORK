@@ -48,17 +48,17 @@ class PhilosopherSem implements Runnable {
     }
 
     private void eat() {
-        sems[leftFork].acquireUninterruptibly(1);
-        sems[rightFork].acquireUninterruptibly(1);
-        System.out.println("Phylosoph number: " + pos + " put up left fork " + leftFork);
-        System.out.println("Phylosoph number: " + pos + " put up right fork " + rightFork);
-        System.out.println("Phylosoph number: " + pos + " eating ");
-        Sleep.sleepMillis(2000);
-
+        try {
+            sems[leftFork].acquire(1);
+            sems[rightFork].acquire(1);
+            System.out.println("Phylosoph number: " + pos + " eating ");
+            Sleep.sleepMillis(2000);
+        }
+        catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
         sems[rightFork].release();
         sems[leftFork].release();
-        System.out.println("Phylosoph number: " + pos + " put off right fork " + rightFork);
-        System.out.println("Phylosoph number: " + pos + " put off left fork " + leftFork);
         System.out.println("Phylosoph number: " + pos + " thinking");
         Sleep.sleepMillis(1000);
     }
