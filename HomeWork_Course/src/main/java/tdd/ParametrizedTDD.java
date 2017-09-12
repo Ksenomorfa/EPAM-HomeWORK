@@ -18,8 +18,9 @@ public class ParametrizedTDD {
     }
 
     public static double division(int dividend, int divider) {
+        if (divider == 0) {
+            throw new ArithmeticException();
+        }
         return (double) dividend / divider;
     }
-
-
 }
