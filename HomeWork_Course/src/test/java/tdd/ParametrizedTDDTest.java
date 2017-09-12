@@ -18,6 +18,8 @@ public class ParametrizedTDDTest {
     void testFactorial(int n, int result) {
         assertEquals(result, ParametrizedTDD.factorial(n));
     }
+
+
     @DisplayName("Multiply tests")
     @ParameterizedTest(name = "result of {0}*{1} should be {2}")
     @CsvSource({"1, 2, 2", "1, 3, 3", "0, 1, 0"})

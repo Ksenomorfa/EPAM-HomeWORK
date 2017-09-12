@@ -3,6 +3,11 @@ package tdd;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RangeTest {
@@ -12,6 +17,7 @@ public class RangeTest {
     private static Range range3;
     private static Range range4;
     private static Range range5;
+    private static Range range6;
 
     private static long value1;
     private static long value2;
@@ -24,6 +30,7 @@ public class RangeTest {
         range3 = new Range(-1, 20);
         range4 = new Range(0, 1);
         range5 = new Range(0, 1);
+        range6 = new Range(0, 10, 3);
 
         value1 = 10;
         value2 = 20;
@@ -83,10 +90,28 @@ public class RangeTest {
 
     @Test
     void asList() throws Exception {
+        assertEquals(Arrays.asList(10L, 11L, 12L, 13L, 14L, 15L, 16L, 17L, 18L, 19L,
+                20L, 21L, 22L, 23L, 24L, 25L, 26L, 27L, 28L, 29L, 30L),
+                range1.asList());
+
+        assertEquals(Arrays.asList(0L, 1L),
+                range4.asList());
+
+        assertEquals(Arrays.asList(0L, 3L, 6L, 9L, 10L),
+                range6.asList());
     }
 
     @Test
     void asIterator() throws Exception {
+        Iterator<Long> iterator = range1.asIterator();
+        List<Long> expected = new ArrayList<>();
+        while (iterator.hasNext()) {
+            expected.add(iterator.next());
+        }
+        assertEquals(Arrays.asList(10L, 11L, 12L, 13L, 14L, 15L, 16L, 17L, 18L, 19L,
+                20L, 21L, 22L, 23L, 24L, 25L, 26L, 27L, 28L, 29L, 30L),
+                range1.asList());
+
     }
 
 }
